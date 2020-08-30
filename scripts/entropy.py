@@ -10,11 +10,10 @@ def calcEntropy(data, index, rangeSize):
     for i in data[start:end]:
         hist[i] = hist.get(i, 0) + 1
     entropy = 0
-     z
 
 def entropy(data, blocksize, offset, symbols=256):
     if len(data) < blocksize:
-        raise ValueError, "Data length must be larger than block size."
+        raise "Data length must be larger than block size."
     if offset < blocksize/2:
         start = 0
     elif offset > len(data)-blocksize/2:

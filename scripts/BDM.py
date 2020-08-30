@@ -6,7 +6,7 @@ import numpy as np
 
 os.chdir(sys.path[0])
 
-dataFileName = "conti.c"
+dataFileName = "test.wav"
 
 def fileToByteArray(fileName):
     with open(fileName, mode="rb") as file:
