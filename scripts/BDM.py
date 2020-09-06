@@ -6,7 +6,7 @@ import numpy as np
 
 os.chdir(sys.path[0])
 
-dataFileName = "smoll.png"
+#dataFileName = ""
 
 def fileToByteArray(fileName):
     with open(fileName, mode="rb") as file:
@@ -18,8 +18,8 @@ def BDM(data):
         M[data[i], data[i+1]] = 1
     return M
 
-def BDM2PNG(bdm):
+def BDM2PNG(bdm, filename):
     imageData = np.tile(np.expand_dims(np.where(bdm == 1, 255, bdm), axis=2), (1, 1, 3))
-    cv2.imwrite("../images/" + dataFileName + ".BDM.png", imageData)
+    cv2.imwrite(filename, imageData)
 
-BDM2PNG(BDM(fileToByteArray("../data/" + dataFileName)))
+#BDM2PNG(BDM(fileToByteArray("../data/" + dataFileName)))
