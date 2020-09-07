@@ -4,14 +4,14 @@ import cv2
 import numpy as np
 import math
 
-def calcEntropy(data, index, rangeSize):
+'''def calcEntropy(data, index, rangeSize):
     start = index - rangeSize
     end = index + rangeSize
     for i in data[start:end]:
         hist[i] = hist.get(i, 0) + 1
-    entropy = 0
+    entropy = 0'''
 
-def entropy(data, blocksize, offset, symbols=256):
+'''def entropy(data, blocksize, offset, symbols=256):
     if len(data) < blocksize:
         raise "Data length must be larger than block size."
     if offset < blocksize/2:
@@ -31,7 +31,7 @@ def entropy(data, blocksize, offset, symbols=256):
         # In that case, we adjust the log base to make sure we get a value
         # between 0 and 1.
         entropy += (p * math.log(p, base))
-    return -entropy
+    return -entropy'''
 
 os.chdir(sys.path[0])
 bytesPerLine = 32

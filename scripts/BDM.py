@@ -22,4 +22,9 @@ def BDM2PNG(bdm, filename):
     imageData = np.tile(np.expand_dims(np.where(bdm == 1, 255, bdm), axis=2), (1, 1, 3))
     cv2.imwrite(filename, imageData)
 
+def BDM2IMG(bdm, path):
+    imageData = np.tile(np.expand_dims(np.where(bdm == 1, 255, bdm), axis=2), (1, 1, 3))
+    cv2.imwrite(path, imageData)
+
+
 #BDM2PNG(BDM(fileToByteArray("../data/" + dataFileName)))
