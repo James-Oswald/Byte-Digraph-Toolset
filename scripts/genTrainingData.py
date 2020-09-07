@@ -7,6 +7,8 @@ import random as r
 from BDM import * 
 
 os.chdir(sys.path[0])
+
+#generate training images
 imSize = 512
 numImgs = 100
 img = np.zeros((imSize, imSize, 3), np.uint8)
@@ -19,3 +21,5 @@ for i in range(10, imSize, 5):
 cutPath = "../data/trainingData/"
 for i in os.listdir(cutPath):
     BDM2PNG(BDM(fileToByteArray(cutPath + i)), "../data/trainingDataBDM/" + i + ".BDM.png")
+
+#generate training text
