@@ -4,4 +4,4 @@ A collection of scripts for byte digraph data processing. Includes a BDM and PDD
 Under heavy development.  
 TODO:  
 * PDDM generator  
-* CNN implmentation (Needs testing)
+* CNN implementation (Needs testing)
