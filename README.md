@@ -1,2 +1,6 @@
 # Byte-Digraph-Toolset
-A collection of scripts for byte digraph data processing
+
+Under heavy development.  
+TODO:  
+* PDDM generator  
+* CNN implmentation (Needs testing)
