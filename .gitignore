@@ -1,2 +1,4 @@
-data/trainingdata
-data/trainingdataBDM
+.pylintrc
+data/rawTrainingData
+data/procTrainingData
+models/*/
