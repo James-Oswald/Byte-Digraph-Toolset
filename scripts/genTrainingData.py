@@ -45,7 +45,7 @@ def genExes():
         strlen = r.randint(100, 2000)
         start = r.randint(0, len(slected) - strlen)
         end = start + strlen
-        f = open(rawTrainingDataPath + "/x." + str(j) + ".txt", "wb")
+        f = open(rawTrainingDataPath + "/x." + str(j) + ".exe", "wb")
         f.write(slected[start:end])
         f.close()
         print("Generated x86 " + str(j))

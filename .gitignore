@@ -1,6 +1,6 @@
 .pylintrc
-data/rawTrainingData/*
-!data/rawTrainingData/gitplaceholder
-data/procTrainingData/*
-!data/rawTrainingData/gitplaceholder
+data/rawTrainingData/*.exe
+data/rawTrainingData/*.txt
+data/rawTrainingData/*.png
+data/procTrainingData/*.npz
 models/*/
