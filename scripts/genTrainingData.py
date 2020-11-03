@@ -62,7 +62,7 @@ def generateBDMDataFile():
     for i in range(len(fileNames)):
         trainingData[i, :, :] = BDM(fileToByteArray(rawTrainingDataPath + "/" + fileNames[i]))
         trainingLabels[i] = ord(fileNames[i][0])
-        print("Generated BDM:" + i)
+        print("Generated BDM:" + str(i))
     np.savez("../data/procTrainingData/data.npz", labels=trainingLabels, data=trainingData)    
     
 genTxts()
