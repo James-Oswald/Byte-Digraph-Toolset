@@ -4,7 +4,7 @@ import sys
 import cv2
 import numpy as np
 import random as r
-from BDM import * 
+from BDM import BDM, fileToByteArray
 
 os.chdir(sys.path[0])
 

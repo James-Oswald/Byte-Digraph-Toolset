@@ -2,7 +2,7 @@ import os
 import sys
 import cv2
 import numpy as np
-import math
+#import math
 
 '''def calcEntropy(data, index, rangeSize):
     start = index - rangeSize

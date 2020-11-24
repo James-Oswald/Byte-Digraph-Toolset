@@ -1,6 +1,7 @@
 import os
 import sys
 os.chdir(sys.path[0])
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  #disable Tensorflow warning messages
 
 import numpy as np
 from tensorflow import keras
@@ -15,33 +16,33 @@ def unison_shuffled_copies(a, b):
 num_classes = 3
 input_shape = (256, 256, 1)
 # the data, split between train and test sets
-#(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+#(trainingImages, trainingLabels), (testingImages, testingLabels) = keras.datasets.mnist.load_data()
 datafile = np.load("../data/procTrainingData/data.npz")
 x_data = datafile["data"]
 y_data = datafile["labels"]
 x_data, y_data = unison_shuffled_copies(x_data, y_data)
-x_train = x_data[:2500, :, :]
-y_train = y_data[:2500]
-x_test = x_data[2500:, :, :]
-y_test = y_data[2500:]
+trainingImages = x_data[:2500, :, :]
+trainingLabels = y_data[:2500]
+testingImages = x_data[2500:, :, :]
+testingLabels = y_data[2500:]
 
 #encode lables 
 le = LabelEncoder()
-le.fit(y_train)
-y_train = le.transform(y_train)
-le.fit(y_test)
-y_test = le.transform(y_test)
+le.fit(trainingLabels)
+trainingLabels = le.transform(trainingLabels)
+le.fit(testingLabels)
+testingLabels = le.transform(testingLabels)
 
 # Make sure images have shape (256, 256, 1)
-x_train = np.expand_dims(x_train, -1)
-x_test = np.expand_dims(x_test, -1)
-print("x_train shape:", x_train.shape)
-print(x_train.shape[0], "train samples")
-print(x_test.shape[0], "test samples")
+trainingImages = np.expand_dims(trainingImages, -1)
+testingImages = np.expand_dims(testingImages, -1)
+print("trainingImages shape:", trainingImages.shape)
+print(trainingImages.shape[0], "train samples")
+print(testingImages.shape[0], "test samples")
 
 # convert class vectors to binary class matrices
-y_train = keras.utils.to_categorical(y_train, num_classes)
-y_test = keras.utils.to_categorical(y_test, num_classes)
+trainingLabels = keras.utils.to_categorical(trainingLabels, num_classes)
+testingLabels = keras.utils.to_categorical(testingLabels, num_classes)
 
 model = keras.Sequential(
     [
@@ -60,9 +61,9 @@ model.summary()
 batch_size = 128
 epochs = 3
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
-model.save("../data/models/BBDMModel")
+model.fit(trainingImages, trainingLabels, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+model.save("../data/models/BBDMModel.hdf5")
 
-score = model.evaluate(x_test, y_test, verbose=0)
+score = model.evaluate(testingImages, testingLabels, verbose=0)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])

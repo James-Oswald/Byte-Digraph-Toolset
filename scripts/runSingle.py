@@ -1,7 +1,7 @@
 import os
 import sys
 os.chdir(sys.path[0])
-from BDM import *
+from BDM import BDM2PNG
 
 from tensorflow import keras
 import numpy as np
