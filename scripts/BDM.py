@@ -12,11 +12,17 @@ def fileToByteArray(fileName):
     with open(fileName, mode="rb") as file:
         return file.read()
 
-def BDM(data):
+def BBDM(data):
     M = np.zeros((256, 256))
     for i in range(0, len(data) - 1):
         M[data[i], data[i+1]] = 1
     return M
+
+def PDBDM(data):
+    M = np.zeros((256, 256))
+    for i in range(0, len(data) - 1):
+        M[data[i], data[i+1]] += 1
+    return M/M.max()
 
 def BDM2File(bdm, filename):
     np.save(filename, bdm)

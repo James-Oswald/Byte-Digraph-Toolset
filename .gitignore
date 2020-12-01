@@ -5,3 +5,4 @@ data/rawTrainingData/*.png
 data/procTrainingData/*.npz
 models/*/
 data/realWorldData/*.tar
+__pycache__
