@@ -21,7 +21,7 @@ def getRealDataBDMs(bdmFunc, bytesPerSample, samplesPerClass, classes):
             numSamples = sfl + (1 if fileNumber < sml else 0)
             fileBytes = bytearray(datasetTar.extractfile(datafiles[fileNumber]).read())
             while bytesPerSample > len(fileBytes):
-                fileBytes += bytearray(10000)
+                fileBytes += bytearray(datasetTar.extractfile(datafiles[fileNumber]).read())
                 #raise Exception("bytesPerSample is %d but len(fileBytes) of %s is only %d" % (bytesPerSample, datafiles[fileNumber].name, len(fileBytes)))
             for i in range(numSamples):
                 startIndex = random.randint(0, len(fileBytes) - bytesPerSample)

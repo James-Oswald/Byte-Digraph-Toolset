@@ -60,15 +60,15 @@ def cnnTest(bdms, lbls, numTest, classes):
     )
     #model.summary()
 
-    batch_size = 150
-    epochs = 2
+    batch_size = 128
+    epochs = 3
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-    model.fit(trainingImages, trainingLabels, batch_size=batch_size, epochs=epochs, validation_split=0.1, verbose=False)
+    model.fit(trainingImages, trainingLabels, batch_size=batch_size, epochs=epochs, validation_split=0.1, verbose=True)
     #model.save("../models/BBDM-Naive-Model.hdf5")
 
     score = model.evaluate(testingImages, testingLabels, verbose=0)
-    #print("Test loss:", score[0])
-    #print("Test accuracy:", score[1])
+    print("Test loss:", score[0])
+    print("Test accuracy:", score[1])
     return score[1]
 
 

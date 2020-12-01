@@ -5,7 +5,7 @@ from cnnTrain import cnnTest
 from realData import getRealDataBDMs
 import matplotlib.pyplot as plt
 
-samplesPerClass = 150
+samplesPerClass = 1000
 classes = ["audio", "text", "exedata", "dlldata", "pngs", "jpgs", "random"]
 
 bytesPerBDM = range(5000, 35000, 5000)
@@ -18,6 +18,6 @@ for i in range(len(bytesPerBDM)):
     results.append(acc)
     print("Finished Training for " + str(bytesPerBDM[i]) + " acc was " + str(acc))
 
-plt.plot(bytesPerBDM, results)
-plt.savefig("../results/naiveBBDMs8.png")
-plt.show()
+#plt.plot(bytesPerBDM, results)
+#plt.savefig("../results/naiveBBDMs9.png")
+#plt.show()
