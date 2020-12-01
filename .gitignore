@@ -4,3 +4,4 @@ data/rawTrainingData/*.txt
 data/rawTrainingData/*.png
 data/procTrainingData/*.npz
 models/*/
+data/realWorldData/*.tar

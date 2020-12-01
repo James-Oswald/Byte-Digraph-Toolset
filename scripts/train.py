@@ -13,11 +13,11 @@ def unison_shuffled_copies(a, b):
     p = np.random.permutation(len(a))
     return a[p], b[p]
 
-num_classes = 3
+num_classes = 4
 input_shape = (256, 256, 1)
 # the data, split between train and test sets
 #(trainingImages, trainingLabels), (testingImages, testingLabels) = keras.datasets.mnist.load_data()
-datafile = np.load("../data/procTrainingData/data.npz")
+datafile = np.load("../data/procTrainingData/realData.npz")
 x_data = datafile["data"]
 y_data = datafile["labels"]
 x_data, y_data = unison_shuffled_copies(x_data, y_data)
@@ -59,10 +59,10 @@ model = keras.Sequential(
 model.summary()
 
 batch_size = 128
-epochs = 3
+epochs = 2
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 model.fit(trainingImages, trainingLabels, batch_size=batch_size, epochs=epochs, validation_split=0.1)
-model.save("../data/models/BBDMModel.hdf5")
+model.save("../models/BBDMModel.hdf5")
 
 score = model.evaluate(testingImages, testingLabels, verbose=0)
 print("Test loss:", score[0])
